@@ -6,8 +6,71 @@
 <head>
 <title>J-MP</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script type="text/javascript" src="<c:url value='ressources/js/angular.js' />"></script>
-<script type="text/javascript" src="<c:url value='ressources/js/script.js' />"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+<script type="text/javascript" >
+  
+var app = angular.module("app", []);
+app.controller("AppController", function($scope,$http) {
+  
+  
+  function setFalse(){
+$scope.varB=false;
+  $scope.addC=false;
+$scope.remC=false;
+$scope.addoC=false;
+  }
+
+  setFalse();
+  $scope.showForm=function(e){
+
+    if(e=='VB')
+    {setFalse();
+    $scope.varB=true; 
+  }
+  if(e=='AC')
+  {setFalse();
+    $scope.addC=true; 
+  }
+
+   if(e=='RC')
+  {setFalse();
+    $scope.remC=true; 
+  }
+  if(e=='AF')
+  {setFalse();
+    $scope.addoC=true;  
+  }
+  }
+
+$scope.getAMPL = function() {
+        
+         $http({
+            url : "<c:url value='/getAMPL' />",
+            method : "POST",
+            data : {
+                'ProblemID' : $scope.ProblemID
+            }
+        }).then(function(response) {
+            console.log(response.data);
+            $scope.message = response.data;
+        }, function(response) {
+            //fail case
+            console.log(response);
+            $scope.message = response;
+        });
+        
+        };
+
+
+});
+
+
+
+
+
+
+
+</script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -37,21 +100,21 @@
   </div>
 </nav>
 	
-	<div class="container">
+	<div class="container" ng-controller="AppController">
 
 <div class="row ">
 
-<div class="col-lg-6" ng-controller="AppController">
+<div class="col-lg-6" >
   <h2 style="border-bottom-style:solid;padding-bottom: 25px;">Operations</h2>
   
 
 <br/>
-<form class="form-horizontal" action="" method="post">
+<form class="form-horizontal" action="">
     <div class="form-group">
     <div class="row">
       <label class="control-label col-lg-2" >ProblemID</label>
       <div class="col-lg-2">
-        <input type="text" class="form-control" id="" >
+        <input type="text" class="form-control" id="" ng-model="ProblemID">
       </div>
       </div>
       <br/>
@@ -60,7 +123,7 @@
         <button type="" class="btn btn-success">getProblem</button>
       </div>
        <div class="col-lg-2 col-lg-offset-1">
-        <button type="" class="btn btn-success">getAMPL</button>
+        <button type="" class="btn btn-success" ng-click="getAMPL()">getAMPL</button>
       </div>
       <div class="col-lg-2 col-lg-offset-1">
         <button type="" class="btn btn-success">getJson</button>
@@ -84,8 +147,8 @@
 
       <div class="row" ng-if="varB">
       <br/>
-  <h4>Setting var bounds</h4> <div class="panel panel-default" style="background:#e1eaea;" >
-  <form class="form-horizontal " action="" method="post" ><br/>
+  <h4>Setting var bounds</h4> <div class="panel panel-default" style="background:#e1eaea;">
+  <form class="form-horizontal " action=""><br/>
     <div class="form-group">
       <label class="control-label col-lg-3" for="">Var name:</label>
       <div class="col-lg-3">
@@ -108,7 +171,7 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-10">
-        <button type="submit" class="btn btn-primary" value="setvarbounds" >Set</button>
+        <button type="submit" class="btn btn-primary">Set</button>
       </div>
     </div>
   </form> </div>
@@ -120,7 +183,7 @@
  <div class="row " ng-if="addC">
       <br/>
   <h4>Adding new constraint</h4>
-  <form class="form-horizontal panel panel-default" style="background:#e1eaea;" method="post"><br/>
+  <form class="form-horizontal panel panel-default" style="background:#e1eaea;"><br/>
     <div class="form-group">
       <label class="control-label col-lg-3" for="">New constraint:</label>
       <div class="col-lg-6">
@@ -131,7 +194,7 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-10 col-lg-offset-3">
-        <button type="submit" class="btn btn-primary" value="addconstraint">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
   </form>
@@ -140,7 +203,7 @@
 <div class="row" ng-if="remC">
       <br/>
   <h4>Removing old constraint</h4>
-  <form class="form-horizontal panel panel-default" style="background:#e1eaea;" method="post"><br/>
+  <form class="form-horizontal panel panel-default" style="background:#e1eaea;"><br/>
     <div class="form-group">
       <label class="control-label col-lg-3" for="">Old constraint:</label>
       <div class="col-lg-6">
@@ -151,7 +214,7 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-10 col-lg-offset-3" >
-        <button type="submit" class="btn btn-primary" value="removeconstraint">Remove</button>
+        <button type="submit" class="btn btn-primary">Remove</button>
       </div>
     </div>
   </form>
@@ -161,7 +224,7 @@
  <div class="row" ng-if="addoC">
       <br/>
   <h4>Setting new objective function</h4>
-  <form class="form-horizontal panel panel-default" style="background:#e1eaea;" method="post"><br/>
+  <form class="form-horizontal panel panel-default" style="background:#e1eaea;"><br/>
     <div class="form-group">
       <label class="control-label col-lg-4" for="">New Objective function:</label>
       <div class="col-lg-6">
@@ -172,7 +235,7 @@
 
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-10 col-lg-offset-4">
-        <button type="submit" class="btn btn-primary" value="setobjectivefunction">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
   </form>
@@ -195,7 +258,7 @@
 
 <div class="col-lg-5 panel panel-default col-lg-offset-1" style="background:#e1eaea;">
   <h1   >Output</h1>
-  <textarea class="form-control" rows="20" id="comment"></textarea> 
+  <textarea class="form-control" rows="20" id="comment" ng-model="message"></textarea> 
 </div>
 
 
