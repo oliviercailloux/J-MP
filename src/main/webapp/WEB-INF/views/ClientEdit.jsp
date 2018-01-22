@@ -51,7 +51,7 @@ $scope.addoC=false;
                 'ProblemID' : $scope.ProblemID
             }
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.message = response.data;
         }, function(response) {
             //fail case
@@ -69,8 +69,9 @@ $scope.getAMPL = function() {
                 'ProblemID' : $scope.ProblemID
             }
         }).then(function(response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.message = response.data;
+            //alert(response.data);
         }, function(response) {
             //fail case
             console.log(response);

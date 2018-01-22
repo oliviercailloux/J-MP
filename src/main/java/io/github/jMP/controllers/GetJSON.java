@@ -66,8 +66,8 @@ public class GetJSON extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	    @Inject
-	 
 		private FakeDB db;
+	    
 	    private Map<Integer,MP> listProblem;
 	    private MP mp;
 	    private JsonObject value;
@@ -129,12 +129,12 @@ public class GetJSON extends HttpServlet{
 				jsonWriter.write(value);
 			}
 	
-			
+			amplProgram=stringWriter.toString();
 			}}
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
-	        response.getWriter().write(stringWriter.toString());
-	        System.out.println(stringWriter);
+	        response.getWriter().write(amplProgram);
+	       // System.out.println(stringWriter);
 			
 			
 	    }
