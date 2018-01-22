@@ -60,6 +60,25 @@ $scope.getAMPL = function() {
         });
         
         };
+        
+$scope.getJSON = function() {
+            
+            $http({
+               url : "<c:url value='/getJSON' />",
+               method : "POST",
+               data : {
+                   'ProblemID' : $scope.ProblemID
+               }
+           }).then(function(response) {
+               console.log(response.data);
+               $scope.message = response.data;
+           }, function(response) {
+               //fail case
+               console.log(response);
+               $scope.message = response;
+           });
+           
+           };        
 
 
 });
@@ -126,7 +145,7 @@ $scope.getAMPL = function() {
         <button type="" class="btn btn-success" ng-click="getAMPL()">getAMPL</button>
       </div>
       <div class="col-lg-2 col-lg-offset-1">
-        <button type="" class="btn btn-success">getJson</button>
+        <button type="" class="btn btn-success" ng-click="getJSON()">getJSON</button>
       </div>
       </div>
       <br/>
