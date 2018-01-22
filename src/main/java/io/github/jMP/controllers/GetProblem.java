@@ -61,20 +61,41 @@ public class GetProblem extends HttpServlet {
 			{listProblem=db.getProblemList();System.out.println("ok");
 			if(listProblem.containsKey(Integer.parseInt(problemId))){System.out.println("ok");
 			mp=listProblem.get(Integer.parseInt(problemId));
+			
 			//GET PROBLEM DESCRIPTION
-			descriptionProgram="Problem name : "+mp.getName()+"\n";
-			descriptionProgram+="List of variables : ";
-		 listVariables=mp.getVariables();
-			for(int i=0;i<listVariables.size();i++)
-				descriptionProgram+=" "+listVariables.get(i).getName();
+			//We get problem informations and store them in a string
+			descriptionProgram="********* Problem name : "+mp.getName()+" *******\n";
+			
+			//Add the variables
+			descriptionProgram+="List of variables : \n";
+			listVariables=mp.getVariables();
+			for(int i=0;i<listVariables.size();i++){
+				descriptionProgram+="* "+listVariables.get(i).getName();
+				descriptionProgram+= " defined in the intervall " ; 
+				descriptionProgram+= (listVariables.get(i).getBounds().toString());
+				descriptionProgram+= "\n";
+			}
+			
+			//Add the objective function
+			descriptionProgram+="\n We want to output the ";
+			descriptionProgram+= mp.getObjective().getSense().toString();
+			descriptionProgram+= " of the following objective function: \n **"; 
+			descriptionProgram+= mp.getObjective().getFunction().toString() + "\n";
+			
+			//Add the constraints descriptions
+			descriptionProgram+= "Under the following constraints: \n";
+			for(int i=0;i<  mp.getConstraints().size() ;i++){
+				descriptionProgram +="* "+mp.getConstraints().get(i).getLhs().toString()+" "+ mp.getConstraints().get(i).getOperator().toString()+" "+ Double.toString(mp.getConstraints().get(i).getRhs())+"\n";
+			}
 			
 			
-			descriptionProgram+="\n";
-			descriptionProgram+="suite de la description";
-			//suite ...
+			//Clean the name of variables
+			for(int i=0;i<listVariables.size();i++){
+				descriptionProgram = descriptionProgram.replace("_" + mp.getObjective().getFunction().getVariables().get(i).getReferences().toString().replace("[","").replace("]",""), ""); 
+			}
+		    descriptionProgram+= "\n***************** END ************";
+
 			
-			
-			//end
 			}}
 			//This code return the description response		
 			  
