@@ -63,11 +63,9 @@ $scope.addoC=false;
 $scope.getAMPL = function() {
         
          $http({
-            url : "<c:url value='/getAMPL' />",
-            method : "POST",
-            data : {
-                'ProblemID' : $scope.ProblemID
-            }
+            url : "<c:url value='/getAMPL' />?ProblemID="+$scope.ProblemID,
+            method : "GET"
+            
         }).then(function(response) {
             //console.log(response.data);
             $scope.message = response.data;
@@ -83,11 +81,8 @@ $scope.getAMPL = function() {
 $scope.getJSON = function() {
             
             $http({
-               url : "<c:url value='/getJSON' />",
-               method : "POST",
-               data : {
-                   'ProblemID' : $scope.ProblemID
-               }
+            	url : "<c:url value='/getJSON' />?ProblemID="+$scope.ProblemID,
+                method : "GET"
            }).then(function(response) {
                console.log(response.data);
                $scope.message = response.data;
