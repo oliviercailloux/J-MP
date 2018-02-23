@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/GriniAchraf/J-MP.svg?branch=master)](https://travis-ci.org/GriniAchraf/J-MP)
+image:https://travis-ci.org/GriniAchraf/J-MP.svg?branch=master["Build Status", link="https://travis-ci.org/GriniAchraf/J-MP"]
