@@ -9,7 +9,7 @@ import io.github.oliviercailloux.jlp.elements.SumTerms;
 import io.github.oliviercailloux.jlp.elements.Variable;
 import io.github.oliviercailloux.jlp.mp.MP;
 import io.github.oliviercailloux.jlp.mp.MPBuilder;
-import io.github.oliviercailloux.jmp.classes.MPToJSON;
+import io.github.oliviercailloux.jmp.utils.MPToJSON;
 
 import org.junit.Test;
 

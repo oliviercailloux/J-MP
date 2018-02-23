@@ -6,7 +6,7 @@ import io.github.oliviercailloux.jlp.elements.SumTerms;
 import io.github.oliviercailloux.jlp.elements.Variable;
 import io.github.oliviercailloux.jlp.mp.MP;
 import io.github.oliviercailloux.jlp.mp.MPBuilder;
-import io.github.oliviercailloux.jmp.classes.AMPL;
+import io.github.oliviercailloux.jmp.utils.AMPL;
 
 import org.junit.Test;
 

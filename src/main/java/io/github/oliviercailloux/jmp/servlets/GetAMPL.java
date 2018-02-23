@@ -1,14 +1,16 @@
 package io.github.oliviercailloux.jmp.servlets;
 
 import io.github.oliviercailloux.jlp.mp.MPBuilder;
-import io.github.oliviercailloux.jmp.classes.AMPL;
-import io.github.oliviercailloux.jmp.classes.FakeDB;
 
+
+import io.github.oliviercailloux.jmp.utils.AMPL;
+import io.github.oliviercailloux.jmp.utils.FakeDB;
 
 import java.io.IOException;
 import java.util.Map;
 
-import javax.inject.Inject;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

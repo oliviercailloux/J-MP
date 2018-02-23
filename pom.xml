@@ -11,7 +11,18 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
-
+<repositories>
+	<repository>
+		<id>OSSRH-snapshots</id>
+		<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		<releases>
+			<enabled>false</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -34,13 +45,9 @@
 		<dependency>
     <groupId>io.github.oliviercailloux</groupId>
     <artifactId>jlp</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
 </dependency>
-<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
-		</dependency>
+
 		
 		 <dependency>
     <groupId>javax.json</groupId>
@@ -55,4 +62,5 @@
 
 		
 	</dependencies>
+	
 </project>

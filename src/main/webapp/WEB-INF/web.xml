@@ -5,7 +5,7 @@
   
   
   <welcome-file-list>
-        <welcome-file>/WEB-INF/views/ClientEdit.jsp</welcome-file>
+        <welcome-file>/WEB-INF/views/ClientEdit.html</welcome-file>
     </welcome-file-list>
     
 </web-app>

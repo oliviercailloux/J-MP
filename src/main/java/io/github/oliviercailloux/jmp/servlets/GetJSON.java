@@ -1,17 +1,15 @@
 package io.github.oliviercailloux.jmp.servlets;
 
 import io.github.oliviercailloux.jlp.mp.MPBuilder;
-
-import io.github.oliviercailloux.jmp.classes.FakeDB;
-import io.github.oliviercailloux.jmp.classes.MPToJSON;
+import io.github.oliviercailloux.jmp.utils.FakeDB;
+import io.github.oliviercailloux.jmp.utils.MPToJSON;
 
 import java.io.IOException;
-
 import java.util.Map;
 
 
-import javax.json.JsonObject;
 
+import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
