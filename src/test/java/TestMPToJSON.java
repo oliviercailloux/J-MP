@@ -1,4 +1,8 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import javax.json.JsonObject;
 
 import io.github.oliviercailloux.jlp.elements.ComparisonOperator;
@@ -16,7 +20,7 @@ import org.junit.Test;
 import static io.github.oliviercailloux.jlp.elements.VariableDomain.INT_DOMAIN;
 import static org.junit.Assert.assertEquals;
 public class TestMPToJSON {
-	
+	private static final String FILENAME = "json.txt";
 	MPBuilder mp1=MP.builder();
     
     @Test
@@ -32,11 +36,52 @@ public class TestMPToJSON {
          mp1.getConstraints().add(c1);
          MPToJSON mpToJson=new MPToJSON(mp1);
          JsonObject model=mpToJson.getJson();
-         
+       //Reading the json format of this problem
+         String output="";
+     	output = readJsonSyntax(output);
        
- 		String output="{\"ProblemName\":\"Prod0\",\"Objective\":{\"Sense\":\"MAX\",\"Function\":[{\"Coefficient\":25.0,\"Variable\":{\"Name\":\"XB\",\"VariableDomain\":\"INT_DOMAIN\",\"Range\":{\"LowerBound\":\"0.0\",\"UpperBound\":\"6000.0\"}}},{\"Coefficient\":30.0,\"Variable\":{\"Name\":\"XC\",\"VariableDomain\":\"INT_DOMAIN\",\"Range\":{\"LowerBound\":\"0.0\",\"UpperBound\":\"4000.0\"}}}]},\"Constraints\":[{\"Lhs\":[{\"Coefficient\":0.005,\"Variable\":{\"Name\":\"XB\",\"VariableDomain\":\"INT_DOMAIN\",\"Range\":{\"LowerBound\":\"0.0\",\"UpperBound\":\"6000.0\"}}},{\"Coefficient\":0.0025,\"Variable\":{\"Name\":\"XC\",\"VariableDomain\":\"INT_DOMAIN\",\"Range\":{\"LowerBound\":\"0.0\",\"UpperBound\":\"4000.0\"}}}],\"ComparisonOperator\":\"<=\",\"Rhs\":40.0,\"Description\":\"(hours to make a ton of bands) × XB + (hours to make a ton of coils) × XCThis number cannot exceed the 40 hours available\"}]}";
-
- 		assertEquals(output,model.toString());
+ 		 		assertEquals(output,model.toString());
     }
+    
+    private String readJsonSyntax(String output) {
+		BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			
+			fr = new FileReader(classLoader.getResource(FILENAME).getFile());
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				output+=sCurrentLine;
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}
+		output=output.trim();
+		return output;
+	}
 
 }

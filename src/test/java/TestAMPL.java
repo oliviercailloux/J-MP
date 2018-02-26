@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import io.github.oliviercailloux.jlp.elements.ComparisonOperator;
 import io.github.oliviercailloux.jlp.elements.Constraint;
 import io.github.oliviercailloux.jlp.elements.FiniteRange;
@@ -15,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class TestAMPL {
 
 	
-    
+	private static final String FILENAME = "ampl.txt";
      MPBuilder mp1=MP.builder();
      
     @Test
@@ -30,12 +34,51 @@ public class TestAMPL {
          mp1.setObjective(objFunction);
          mp1.getConstraints().add(c1);
          AMPL ampl=new AMPL(mp1);
-         String output="var XB;"+"\n"+"var XC;"+"\n";
-         output+="maximize Profit: 25.0 * XB + 30.0 * XC;"+"\n";
-         output+="subject to Time: 0.005 * XB + 0.0025 * XC <= 40.0;"+"\n";
-         output+="subject to XB_limit: 0.0 <= XB <= 6000.0;"+"\n";
-         output+="subject to XC_limit: 0.0 <= XC <= 4000.0;";
-         
+       //Reading the ampl format of this problem
+         String output="";
+     	output = readAmplSyntax(output);
+		
          assertEquals(output,ampl.getAMPL());
     }
+
+	private String readAmplSyntax(String output) {
+		BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			
+			fr = new FileReader(classLoader.getResource(FILENAME).getFile());
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				output+=sCurrentLine+"\n";
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}
+		output=output.trim();
+		return output;
+	}
 }

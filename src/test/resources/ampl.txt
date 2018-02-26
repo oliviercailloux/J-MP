@@ -1,0 +1,6 @@
+var XB;
+var XC;
+maximize Profit: 25.0 * XB + 30.0 * XC;
+subject to Time: 0.005 * XB + 0.0025 * XC <= 40.0;
+subject to XB_limit: 0.0 <= XB <= 6000.0;
+subject to XC_limit: 0.0 <= XC <= 4000.0;
