@@ -11,6 +11,8 @@ import java.util.Map;
 
 
 
+
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,9 +22,15 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/getAMPL")
 public class GetAMPL extends HttpServlet{
-private static final long serialVersionUID = 1L;
+
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Inject
 	private FakeDB db;
     
     private Map<Integer, MPBuilder> listProblem;
@@ -31,7 +39,7 @@ private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	 
             throws ServletException, IOException {
-    	db=new FakeDB();
+    	
     	
     	//This code get the id of the problem
     	String problemId = request.getParameter("ProblemID");

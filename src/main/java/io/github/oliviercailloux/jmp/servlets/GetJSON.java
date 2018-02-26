@@ -9,6 +9,8 @@ import java.util.Map;
 
 
 
+
+import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +27,8 @@ public class GetJSON extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 1L;
 
-private FakeDB db;
+	@Inject
+	private FakeDB db;
     
     private Map<Integer, MPBuilder> listProblem;
     private MPBuilder  mp;
@@ -35,7 +38,7 @@ private FakeDB db;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	 
             throws ServletException, IOException {
-    	db=new FakeDB();
+    	
     	
     	//This code get the id of the problem
     	String problemId = request.getParameter("ProblemID");
