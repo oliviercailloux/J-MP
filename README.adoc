@@ -1,3 +1,3 @@
 image:https://travis-ci.org/GriniAchraf/J-MP.svg?branch=master["Build Status", link="https://travis-ci.org/GriniAchraf/J-MP"]
-Ce projet a pour objectif:
-Permettre l’édition et la résolution collaborative de programmes mathématiques (en particulier PLNP, programmes à variables mixtes).
+
+Ce projet permet l’édition et la résolution collaborative de programmes mathématiques (en particulier PLNP, programmes à variables mixtes).
