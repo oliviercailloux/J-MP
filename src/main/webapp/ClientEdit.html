@@ -39,24 +39,37 @@
 <form class="form-horizontal" action="">
     <div class="form-group">
     <div class="row">
-      <label class="control-label col-lg-2" >ProblemID</label>
-      <div class="col-lg-2">
-        <input type="text" class="form-control" id="" data-ng-model="ProblemID">
+    <div class="col-lg-2">
+        <button  class="btn btn-success" data-ng-click="initProblems()">InitProblems</button>
       </div>
+      
       </div>
       </div>
   </form>
       <br/>
        <div class="row">
+
+      <label class="control-label col-lg-2" >ProblemID:</label>
+
       <div class="col-lg-2">
-        <button  class="btn btn-success" data-ng-click="getProblem()">getProblem</button>
+        <input type="text" class="form-control" id="" data-ng-model="ProblemID">
       </div>
-       <div class="col-lg-2 col-lg-offset-1">
-        <button  class="btn btn-success" data-ng-click="getAMPL()">getAMPL</button>
+
+
+      <label class="control-label col-lg-2" >ProblemFormat:</label>
+<div class="col-lg-2 col-lg-offset-1">
+      <div class="radio ">
+  <label><input type="radio" name="optradio" data-ng-model="ProblemFormat" value="AMPL" >AMPL</label>
+</div>
+<div class="radio">
+  <label><input type="radio" name="optradio" data-ng-model="ProblemFormat" value="JSON">JSON</label>
+</div></div>
+
+<div class="col-lg-2">
+        <button  class="btn btn-success" data-ng-click="getProblem()">ShowProblem</button>
       </div>
-      <div class="col-lg-2 col-lg-offset-1">
-        <button  class="btn btn-success" data-ng-click="getJSON()">getJSON</button>
-      </div>
+
+       
       </div>
       <br/>
        <div class="row">

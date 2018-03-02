@@ -7,7 +7,8 @@ $scope.varB=false;
   $scope.addC=false;
 $scope.remC=false;
 $scope.addoC=false;
-
+$scope.ProblemFormat="AMPL";
+$scope.ProblemID=0;
   }
 
   setFalse();
@@ -32,10 +33,10 @@ $scope.addoC=false;
   }
   }
 
-  $scope.getProblem = function() {
+  $scope.initProblems = function() {
         
          $http({
-            url : window.location.href+"/getProblem?ProblemID="+$scope.ProblemID,
+            url : window.location.href+"initProblems",
             method : "GET",
             
         }).then(function(response) {
@@ -48,11 +49,20 @@ $scope.addoC=false;
         });
         
         };
+
+   $scope.getProblem=function(){
+    
+    if($scope.ProblemFormat=="AMPL")
+      getAMPL();
+
+    if($scope.ProblemFormat=="JSON")
+      getJSON();
+   }     
         
-$scope.getAMPL = function() {
+var getAMPL = function() {
         
          $http({
-            url :  window.location.href+"/getAMPL?ProblemID="+$scope.ProblemID,
+            url :  window.location.href+"problems/"+$scope.ProblemID+"/AMPL",
             method : "GET"
             
         }).then(function(response) {
@@ -67,10 +77,10 @@ $scope.getAMPL = function() {
         
         };
         
-$scope.getJSON = function() {
+var getJSON = function() {
             
             $http({
-            	url : window.location.href+"/getJSON?ProblemID="+$scope.ProblemID,
+            	url : window.location.href+"problems/"+$scope.ProblemID+"/Json",
                 method : "GET"
            }).then(function(response) {
                console.log(response.data);
