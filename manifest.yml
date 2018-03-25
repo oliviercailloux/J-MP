@@ -1,4 +1,0 @@
-applications:
- - name: j-mp
-   path: target/j-mp.war
-   instances: 1
