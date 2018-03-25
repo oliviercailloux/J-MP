@@ -63,7 +63,7 @@ public class TestAMPL {
 			URL resourceUrl = TestAMPL.class.getResource(FILENAME);
 
 			br = new BufferedReader(new InputStreamReader(
-					resourceUrl.openStream()));
+					resourceUrl.openStream(),"UTF8"));
 
 			String sCurrentLine;
 
