@@ -1,6 +1,6 @@
 applications:
  - name: J-MP
-   path: target/J-MP.war
+   path: target/j-mp.war
    instances: 1
 
 
