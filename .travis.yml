@@ -10,8 +10,8 @@ cache:
 deploy:
   provider: bluemixcloudfoundry
   skip_cleanup: true
-  username: achraf.grini@dauphine.fr
+  username: achraf.grini@dauphine.eu
   password: $BLUEMIX_PASSWORD
-  organization: achraf.grini@dauphine.fr
+  organization: achraf.grini@dauphine.eu
   space: dev
 region: eu-gb
