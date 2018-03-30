@@ -14,4 +14,4 @@ deploy:
   password: $BLUEMIX_PASSWORD
   organization: achraf.grini@dauphine.eu
   space: dev
-region: eu-gb
+  region: eu-gb
