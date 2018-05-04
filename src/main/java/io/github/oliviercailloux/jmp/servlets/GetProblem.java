@@ -1,10 +1,5 @@
 package io.github.oliviercailloux.jmp.servlets;
 
-import io.github.oliviercailloux.jlp.mp.MPBuilder;
-import io.github.oliviercailloux.jmp.utils.AMPL;
-import io.github.oliviercailloux.jmp.utils.FakeDB;
-import io.github.oliviercailloux.jmp.utils.MPToJSON;
-
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -15,6 +10,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
+import io.github.oliviercailloux.jlp.mp.MPBuilder;
+import io.github.oliviercailloux.jmp.utils.AMPL;
+import io.github.oliviercailloux.jmp.utils.FakeDB;
+import io.github.oliviercailloux.jmp.utils.MPToJSON;
+
 @Path("/{ProblemID}")
 public class GetProblem {
 
@@ -22,6 +22,7 @@ public class GetProblem {
 	private FakeDB db;
 
 	private Map<Integer, MPBuilder> listProblem;
+
 	private MPBuilder mp;
 
 	@GET
