@@ -1,3 +1,10 @@
+= J-MP
+
 image:https://travis-ci.org/GriniAchraf/J-MP.svg?branch=master["Build Status", link="https://travis-ci.org/GriniAchraf/J-MP"]
 
-Ce projet vise à permettre l’édition et la résolution collaborative de programmes mathématiques (en particulier PLNP, programmes à variables mixtes).
+A Java project developed during the https://github.com/oliviercailloux/java-course[Java course] taught at Université Paris-Dauphine (in http://www.mido.dauphine.fr/[MIDO] M2 MIAGE). The code is jointly copyrighted by Olivier Cailloux and Achraf Grini.
+
+The code is hereby published under the MIT License, with their permission.
+
+This project strive to permit collaboratively editing and solving mathematical programs (in particular, PLNPs).
+
